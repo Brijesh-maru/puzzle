@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: sans-serif;
+      }
+      h1 {
+        font-size: 2rem;
+        text-align: center;
+        text-decoration: underline;
+      }
+      #puzzle-container {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 5px;
+      }
+      .title {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 2rem;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .empty {
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>number puzzle</h1>
+    <div id="puzzle-container">
+      <input
+        type="button"
+        value="1"
+        class="title"
+        id="btn1"
+        onclick="clickfun('btn1')"
+      />
+      <input
+        type="button"
+        value="3"
+        class="title"
+        id="btn2"
+        onclick="clickfun('btn2')"
+      />
+      <input
+        type="button"
+        value="5"
+        class="title"
+        id="btn3"
+        onclick="clickfun('btn3')"
+      />
+      <input
+        type="button"
+        value="2"
+        class="title"
+        id="btn4"
+        onclick="clickfun('btn4')"
+      />
+      <input
+        type="button"
+        value="4"
+        class="title"
+        id="btn5"
+        onclick="clickfun('btn5')"
+      />
+      <input
+        type="button"
+        value="6"
+        class="title"
+        id="btn6"
+        onclick="clickfun('btn6')"
+      />
+      <input
+        type="button"
+        value="7"
+        class="title"
+        id="btn7"
+        onclick="clickfun('btn7')"
+      />
+      <input
+        type="button"
+        value="8"
+        class="title"
+        id="btn8"
+        onclick="clickfun('btn8')"
+      />
+      <input
+        type="button"
+        value=""
+        class="title empty"
+        id="btn9"
+        onclick="clickfun('btn9')"
+      />
+    </div>
+    <script>
+      function clickfun(id) {
+        var collection = document.getElementsByClassName("empty");
+
+        idVal = document.getElementById(id);
+
+        inVal = idVal.value;
+
+        if (
+          collection[0].getAttribute("id") == "btn9" &&
+          (id == "btn6" || id == "btn8")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn8" &&
+          (id == "btn7" || id == "btn5" || id == "btn9")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn7" &&
+          (id == "btn4" || id == "btn8")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn6" &&
+          (id == "btn5" || id == "btn9" || id == "btn3")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn5" &&
+          (id == "btn2" || id == "btn4" || id == "btn6" || id == "btn8")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn4" &&
+          (id == "btn1" || id == "btn5" || id == "btn7")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn3" &&
+          (id == "btn2" || id == "btn6")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn2" &&
+          (id == "btn1" || id == "btn3" || id == "btn5")
+        ) {
+          changeValue(collection);
+        } else if (
+          collection[0].getAttribute("id") == "btn1" &&
+          (id == "btn4" || id == "btn2")
+        ) {
+          changeValue(collection);
+        }
+      }
+
+      function changeValue(collection) {
+        idVal.value = "";
+        collection[0].value = inVal;
+        collection[0].classList.remove("empty");
+        idVal.classList.add("empty");
+      }
+    </script>
+  </body>
+</html>
